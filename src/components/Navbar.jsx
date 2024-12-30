@@ -28,7 +28,7 @@ export function Navbar(props)
                         <NavLink
                             to='/'
                         >
-                            Hospital V2
+                            Hospital de las Estrellas
                         </NavLink>
                     </MenuItem>
 

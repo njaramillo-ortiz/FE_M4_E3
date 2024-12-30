@@ -1,6 +1,6 @@
 import { FormSelect } from "semantic-ui-react";
 
-export function DropdownInput({label, options, placeholder, onChange})
+export function DropdownInput({label, options, placeholder, onChange, required})
 {
     return(
         <FormSelect
@@ -9,6 +9,7 @@ export function DropdownInput({label, options, placeholder, onChange})
             options={options}
             placeholder={placeholder}
             onChange={(e) => onChange(e.target.textContent)}
+            required={required}
         />
     );
 }

@@ -63,7 +63,7 @@ export function Doctors()
         <>
             <Segment>
                 <h1>Equipo Médico</h1>
-                <FilterInput label="Filtrar por especialidad" placeholder="Fraude" onChange={getDoctors} />
+                <FilterInput label="Filtrar por especialidad" placeholder="Cirugia" onChange={getDoctors} />
                 <Segment loading={loading}>
                     <DoctorCardGrid doctors={doctors} />
                 </Segment>

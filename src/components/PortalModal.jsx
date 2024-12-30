@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { Modal, ModalActions, ModalContent, ModalDescription, ModalHeader, Button } from "semantic-ui-react";
 
-export default function PortalModal({open, firstName, lastName, doctor, onConfirm}){
+export default function PortalModal({open, firstName, lastName, phone, email, doctor, onConfirm}){
 
     return(
         <>
@@ -11,6 +11,8 @@ export default function PortalModal({open, firstName, lastName, doctor, onConfir
                     <ModalContent>
                         <ModalDescription>
                             <p>Su nombre: {firstName+" "+lastName}</p>
+                            <p>Su teléfono: {phone}</p>
+                            <p>Su correo electrónico: {email}</p>
                             <p>Su doctor: {doctor}</p>
                         </ModalDescription>
                     </ModalContent>

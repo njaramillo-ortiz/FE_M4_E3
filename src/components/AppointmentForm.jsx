@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Form, FormButton, FormField, FormSelect, Segment } from "semantic-ui-react";
+import { Form, FormButton, Segment } from "semantic-ui-react";
 import PortalModal from "./PortalModal";
 import { TextInput } from "./TextInput";
 import { DropdownInput } from "./DropdownInput";
@@ -8,6 +8,8 @@ export function AppointmentForm(props)
 {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
 
     const [doctor, setDoctor] = useState("");
     const [doctors, setDoctors] = useState([]);
@@ -19,8 +21,13 @@ export function AppointmentForm(props)
 
     const firstNameRef = useRef(null);
     const lastNameRef = useRef(null);
+    const phoneRef = useRef(null);
+    const emailRef = useRef(null);
 
     const [modalOpen, setModalOpen] = useState(false);
+
+    const emailValidation = /^\S+@\S+\.\S+$/;
+    const phoneValidation = /^(\+56)?9[0-9]{8}$/;
 
     useEffect(() => {
         firstNameRef.current.focus();
@@ -73,21 +80,59 @@ export function AppointmentForm(props)
 
     return(
         <Segment loading={loading}>
-            <PortalModal open = {modalOpen} onConfirm={ReserveConfirmed} firstName={firstName} lastName={lastName} doctor={doctor} />
+            <PortalModal open = {modalOpen} onConfirm={ReserveConfirmed} firstName={firstName} lastName={lastName} phone={phone} email={email} doctor={doctor} />
 
-            <Form>
+            <Form onSubmit={() => ConfirmReserve()}>
                 <h1>Formulario de Reserva</h1>
                 <TextInput label="Nombre" placeholder="Juanito" onChange={setFirstName} useRef={firstNameRef}/>
                 <TextInput label="Apellido" placeholder="Perez" onChange={setLastName} useRef={lastNameRef} />
-                <DropdownInput label="Especialidad" placeholder="Kinesiología" options={areas} onChange={areaSelected} />
-                <DropdownInput label="Doctor" placeholder="Doctor..." options={doctors} onChange={setDoctor} />
-                <FormButton onClick={() => ConfirmReserve()}>Reservar Hora</FormButton>
+                <TextInput label="Teléfono" placeholder="987654321" onChange={setPhone} useRef={phoneRef}/>
+                <TextInput label="Correo electrónico" placeholder="jperez@hotmail.com" onChange={setEmail} useRef={emailRef}/>
+                <DropdownInput label="Especialidad" placeholder="Kinesiología" options={areas} onChange={areaSelected} required />
+                <DropdownInput label="Doctor" placeholder="Doctor..." options={doctors} onChange={setDoctor} required />
+                <FormButton type="submit">Reservar Hora</FormButton>
             </Form>
         </Segment>
     );
 
     function ConfirmReserve()
     {
+        if(firstNameRef.current.value == null || firstNameRef.current.value == "")
+        {
+            firstNameRef.current.focus();
+            return;
+        }
+
+        if(lastNameRef.current.value == null || lastNameRef.current.value == "")
+        {
+            lastNameRef.current.focus();
+            return;
+        }
+
+        const validatedPhone = phoneValidation.test(phone);
+        if(!validatedPhone)
+        {
+            phoneRef.current.focus();
+            return;
+        }
+
+        const validatedEmail = emailValidation.test(email);
+        if(!validatedEmail)
+        {
+            emailRef.current.focus();
+            return;
+        }
+
+        if(doctor == null || doctor == "")
+        {
+            return;
+        }
+
+        if(area == null || area == "")
+        {
+            return;
+        }
+
         setModalOpen(true);
     }
 
@@ -96,5 +141,7 @@ export function AppointmentForm(props)
         setModalOpen(false);
         firstNameRef.current.value = null;
         lastNameRef.current.value = null;
+        phoneRef.current.value = null;
+        emailRef.current.value = null;
     }
 }
