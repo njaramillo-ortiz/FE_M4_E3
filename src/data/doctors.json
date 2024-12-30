@@ -1,0 +1,26 @@
+[
+    {
+      "key": "drpepper",
+      "value": "drpepper",
+      "text": "Dr. Pepper",
+      "area": "Cirugia",
+      "years": 139,
+      "desc": "Est. 1885. Ahora disponible nuevo sabor Creamy Coconut (normal y zero azúcar)"
+    },
+    {
+      "key": "drdencil",
+      "value": "drdencil",
+      "text": "Dr. Dencil",
+      "area": "Kinesiologia",
+      "years": 12,
+      "desc": "Egresado de la Faculte de Culture Humaine Integrale de Bordeaux, Francia"
+    },
+    {
+      "key": "drpolo",
+      "value": "drpolo",
+      "text": "Dra. Polo",
+      "area": "Pediatria",
+      "years": 23,
+      "desc": "Edúquese lo mas que pueda y respete para que lo respeten"
+    }
+]

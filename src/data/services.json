@@ -1,0 +1,30 @@
+[
+    {
+        "key": "cirugia",
+        "value": "cirugia",
+        "text": "Cirugia",
+        "members": 30,
+        "admin": "Dr. Pepper"
+    },
+    {
+        "key": "kinesiologia",
+        "value": "kinesiologia",
+        "text": "Kinesiologia",
+        "members": 30,
+        "admin": "Dr. Pepper"
+    },
+    {
+        "key": "urgencias",
+        "value": "urgencias",
+        "text": "Urgencias",
+        "members": 30,
+        "admin": "Dr. Pepper"
+    },
+    {
+        "key": "pediatria",
+        "value": "pediatria",
+        "text": "Pediatria",
+        "members": 30,
+        "admin": "Dr. Pepper"
+    }
+]
